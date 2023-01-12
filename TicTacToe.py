@@ -19,6 +19,7 @@ def counter():
 
 class printboard():
     def __init__(self):
+        print()
         square = 0
         self.templine = ""
         for i in range(1,10):
@@ -54,61 +55,64 @@ class printboard():
             self.templine += (" O O ")
 
 ### All of the winning options in tic tac toe
-class checkwin():
+class checkwin:
     def __init__(self):
-        gameover = True
         if card[0][2] == card[1][2] == card[2][2]:
             if card[0][2] != "empty":
-                print("1")
+                self.finish()
         if card[3][2] == card[4][2] == card[5][2]:
             if card[3][2] != "empty":
-                print("2")
+                self.finish()
         if card[6][2] == card[7][2] == card[8][2]:
             if card[6][2] != "empty":
-                print("3")
+                self.finish()
         if card[0][2] == card[3][2] == card[6][2]:
             if card[0][2] != "empty":
-                print("4")
+                self.finish()
         if card[1][2] == card[4][2] == card[7][2]:
             if card[1][2] != "empty":
-                print("5")
+                self.finish()
         if card[2][2] == card[5][2] == card[8][2]:
             if card[2][2] != "empty":
-                print("6")
+                self.finish()
         if card[0][2] == card[4][2] == card[8][2]:
             if card[0][2] != "empty":
-                print("7")
-                exit()
+                self.finish()
         if card[2][2] == card[4][2] == card[6][2]:
             if card[2][2] != "empty":
-                print("Player: " + "wins!")
+                self.finish()
+    def finish(self):
+        if turns == 0:
+            print("Player 1 Wins!")
+        else:
+            print("Player 2 Wins!")
+        exit()
 
 #playerchoice1 = input("Enter Row and Column(A 1): ")
 card = gameboard()
 counter()
 valid = True
+turns = 0
 options = ["A 1", "B 1", "C 1", "A 2", "B 2", "C 2", "A 3", "B 3", "C 3"]
 for turns in range(9):
     while (valid):
-        playerchoice1 = input("Enter Row and Column(A 1): ")
+        playerchoice1 = "empty"
+        playerchoice2 = "empty"
+        if turns % 2 == 0: # evens player 1 goes, odd player 2 goes
+            playerchoice1 = input("Player 1 Enter Row and Column(X): ")
+        else:
+            playerchoice2 = input("Player 2 Enter Row and Column(O): ")
         if playerchoice1 in str(options):
             if card[options.index(playerchoice1)][2] == "empty":
                 card[options.index(playerchoice1)][2] = "cross"
                 valid = False
+        if playerchoice2 in str(options):
+            if card[options.index(playerchoice2)][2] == "empty":
+                card[options.index(playerchoice2)][2] = "circle"
+                valid = False
         else:
-            print("error please enter letter and number(A 1)")
+            print("invalid input please enter again (A 1)")
     valid = True
     printboard()
     checkwin()
 
-#Output - 1
-print()
-#card[int(playerchoice1)][2] = "cross"
-#card[0][2] = "cross"
-#card[1][2] = "circle"
-#card[2][2] = "cross"
-#card[5][2] = "cross"
-#print(card[1][2])
-#printboard()
-#checkwin()
-#print(card)
