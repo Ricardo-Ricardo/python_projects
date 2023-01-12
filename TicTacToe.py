@@ -1,5 +1,4 @@
-#playerchoice1 = input("Enter Row and Column(A 1): ")
-
+playerchoice1 = input("Enter Row and Column(A 1): ")
 
 def gameboard():
     card = []
@@ -7,28 +6,22 @@ def gameboard():
     columns = ["A", "B", "C"]
     for row in rows:
         for col in columns:
-            card.append([row, col, 1]) # 1 means empty # 2 means X # 3 means O
+            card.append([row, col, "empty"]) # options: empty, cross, circle
     return card
 
-#### Example Board
-#def printboard():
-#    print("     |  O  | X X ")
-#    print("     | O O |  X  ")
-#    print("     |  O  | X X ")
-#    horizontal()
-#    #print(playerchoice1)
-#    print("     |     |     ")
-#    print("     |     |     ")
-#    print("     |     |     ")
-#    horizontal()
-#    print(" X X |  O  |     ")
-#    print("  X  | O O |     ")
-#    print(" X X |  O  |     ")
+list = []
+def counter():
+    x = 0
+    for i in range(3):
+        for j in range(3):
+            for k in range (3):
+                list.append(k+x)
+        x += 3
 
 square = 0
 
 card = gameboard()
-print(card)
+#print(card)
 class printboard():
     def __init__(self):
         self.templine = ""
@@ -40,16 +33,15 @@ class printboard():
                 self.line = 1 # first variation line / top or bottom
             for j in range(3):
                 global square
-                if card[j][2] == 1: # 1 means empty
+                if card[list[square]][2] == "empty": # 1 means empty
                     self.templine += ("     ")
-                elif card[j][2] == 2: # 2 means X
+                elif card[list[square]][2] == "cross": # 2 means X
                     self.printX(self.line)
                 else:
                     self.printO(self.line) # 3 means O
                 if j == 0 or j == 1:
                     self.templine += ("|")
-                print(square, j)
-            square += 1
+                square += 1
             self.templine += "\n"
             if i == 3 or i == 6: # These are the horizontal lines
                 self.templine += (" -" * 10 + "\n")
@@ -67,8 +59,16 @@ class printboard():
             self.templine += (" O O ")
     #def horizontal(self):
         #self.horizontal += (" -" * 10)
-
+class checkwin():
+    def __init__(self):
+        print()
 #print(card[1][2])
-card[1][2] = 2
+print()
+card[int(playerchoice1)][2] = "cross"
+#card[1][2] = "cross"
+#card[5][2] = "cross"
 #print(card[1][2])
+counter()
 printboard()
+checkwin()
+#print(card)
