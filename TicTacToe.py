@@ -1,5 +1,6 @@
+### make a list of all the posible squares for example A1, A2, A3, B1...
 def gameboard():
-    card = []
+    card = [] #
     rows = [1, 2, 3]
     columns = ["A", "B", "C"]
     for row in rows:
@@ -8,6 +9,7 @@ def gameboard():
     return card
 
 list = []
+###
 def counter():
     x = 0
     for a in range(3):
@@ -18,6 +20,7 @@ def counter():
 
 
 class printboard():
+    ### print the entire board with empty, cross, or circle
     def __init__(self):
         print()
         square = 0
@@ -42,62 +45,63 @@ class printboard():
             if i == 3 or i == 6: # These are the horizontal lines
                 self.templine += (" -" * 10 + "\n")
         print(self.templine)
-        #horizontal()
+    ### print either top or bottom of the X
     def printX(self, line):
         if line == 1: #option 1 is for top or bottom of the X
             self.templine += (" X X ")
         else:         #option 2 is for middle of the X
             self.templine += ("  X  ")
+    ### print either top or bottom of the O
     def printO(self, line):
         if line == 1: #option 1 is for top or bottom of the O
             self.templine += ("  O  ")
         else:         #option 2 is for middle of the O
             self.templine += (" O O ")
 
-### All of the winning options in tic tac toe
 class checkwin:
+    ### All of the winning options/combinations in tic tac toe
     def __init__(self):
-        if card[0][2] == card[1][2] == card[2][2]:
-            if card[0][2] != "empty":
+        if card[0][2] == card[1][2] == card[2][2]: # horizontal top 
+            if card[0][2] != "empty": # default is empty, check for unique combination 
                 self.finish()
-        if card[3][2] == card[4][2] == card[5][2]:
+        if card[3][2] == card[4][2] == card[5][2]: # horizontal middle 
             if card[3][2] != "empty":
                 self.finish()
-        if card[6][2] == card[7][2] == card[8][2]:
+        if card[6][2] == card[7][2] == card[8][2]: # horizontal bottom
             if card[6][2] != "empty":
                 self.finish()
-        if card[0][2] == card[3][2] == card[6][2]:
+        if card[0][2] == card[3][2] == card[6][2]: # vertical left
             if card[0][2] != "empty":
                 self.finish()
-        if card[1][2] == card[4][2] == card[7][2]:
+        if card[1][2] == card[4][2] == card[7][2]: # vertical middle
             if card[1][2] != "empty":
                 self.finish()
-        if card[2][2] == card[5][2] == card[8][2]:
+        if card[2][2] == card[5][2] == card[8][2]: # vertical right
             if card[2][2] != "empty":
                 self.finish()
-        if card[0][2] == card[4][2] == card[8][2]:
+        if card[0][2] == card[4][2] == card[8][2]: # diagonal \
             if card[0][2] != "empty":
                 self.finish()
-        if card[2][2] == card[4][2] == card[6][2]:
+        if card[2][2] == card[4][2] == card[6][2]: # diagonal /
             if card[2][2] != "empty":
                 self.finish()
+    ### print out the winner
     def finish(self):
-        if turns == 1:
+        if turns % 2 == 0: #checks who had the last turn
             print("Player 1 Wins!")
         else:
             print("Player 2 Wins!")
-        exit()
+        exit() # ends the game after a win
 
-#playerchoice1 = input("Enter Row and Column(A 1): ")
 card = gameboard()
 counter()
 valid = True
 turns = 0
-options = ["A 1", "B 1", "C 1", "A 2", "B 2", "C 2", "A 3", "B 3", "C 3"]
+options = ["A 1", "B 1", "C 1", "A 2", "B 2", "C 2", "A 3", "B 3", "C 3"] # all valid user input
 for turns in range(9):
     while (valid):
-        playerchoice1 = "empty"
-        playerchoice2 = "empty"
+        playerchoice1 = "empty" # player 1 input is set to empty
+        playerchoice2 = "empty" # player 2 input is set to empty
         if turns % 2 == 0: # evens player 1 goes, odd player 2 goes
             playerchoice1 = input("Player 1 Enter Row and Column(X): ")
         else:
