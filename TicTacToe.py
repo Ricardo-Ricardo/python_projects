@@ -9,7 +9,7 @@ def gameboard():
     return card
 
 list = []
-###
+### creates a sequnce that is later used in printboard for the state [2]
 def counter():
     x = 0
     for a in range(3):
@@ -22,22 +22,28 @@ def counter():
 class printboard():
     ### print the entire board with empty, cross, or circle
     def __init__(self):
+        line = 1
+        print()
+        print("    A     B     C")
         print()
         square = 0
         self.templine = ""
         for i in range(1,10):
-            self.templine += "  "
+            #self.templine += "  "
             if i == 2 or i == 5 or i ==8:
                 self.line = 2 # second variation line / middle
+                self.templine += str(line) +" "
+                line += 1
             else:
                 self.line = 1 # first variation line / top or bottom
+                self.templine += "  "
             for j in range(3):
-                if card[list[square]][2] == "empty": # 1 means empty
+                if card[list[square]][2] == "empty": # empty square
                     self.templine += ("     ")
-                elif card[list[square]][2] == "cross": # 2 means X
+                elif card[list[square]][2] == "cross": # X square
                     self.printX(self.line)
                 else:
-                    self.printO(self.line) # 3 means O
+                    self.printO(self.line) # O square
                 if j == 0 or j == 1:
                     self.templine += ("|")
                 square += 1
@@ -98,6 +104,7 @@ counter()
 valid = True
 turns = 0
 options = ["A 1", "B 1", "C 1", "A 2", "B 2", "C 2", "A 3", "B 3", "C 3"] # all valid user input
+printboard()
 for turns in range(9):
     while (valid):
         playerchoice1 = "empty" # player 1 input is set to empty
