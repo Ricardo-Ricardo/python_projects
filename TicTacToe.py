@@ -1,4 +1,4 @@
-playerchoice1 = input("Enter Row and Column(A 1): ")
+#playerchoice1 = input("Enter Row and Column(A 1): ")
 
 
 def gameboard():
@@ -25,37 +25,41 @@ def gameboard():
 #    print("  X  | O O |     ")
 #    print(" X X |  O  |     ")
 
-def horizontal():
-    horizontal = print(" -" * 10)
-    return horizontal
+
 
 card = gameboard()
 print(card)
 class printboard():
     def __init__(self):
         self.templine = ""
-        for i in range(3):
-            if card[i][2] == 1:
-                #self.templine += ("     ")
-                self.printX(1)
-            elif card[i][2] == 2:
-                self.printX()
+        for i in range(1,10):
+            if i == 2 or i == 5 or i ==8:
+                self.line = 2
             else:
-                self.printO()
+                self.line = 1
+            for j in range(3):
+                if card[j][2] == 1: # 1 means empty
+                    #self.templine += ("     ")
+                    self.printX(1)
+                elif card[j][2] == 2: # 2 means X
+                    self.printX()
+                else:
+                    self.printO() # 3 means O
+            self.templine += "\n"
+            if i == 3 or i == 6:
+                self.templine += (" -" * 10 + "\n")
         print(self.templine)
-        horizontal()
+        #horizontal()
     def printX(self, line):
-        if line == 1:
-            #print("yes")
+        if line == 1: #option 1 is for top or bottom of the X
             self.templine += (" X X ")
-        else:
-            #self.template += ("  X  ")
-            print("no")
+        else:         #option 2 is for middle of the X
+            self.templine += ("  X  ")
     def printO(self, line):
-        if line == 1:
-            #self.template += ("  O  ")
-            print("no")
-        else:
-            #self.template += (" O O ")
-            print("no")
+        if line == 1: #option 1 is for top or bottom of the O
+            self.templine += ("  O  ")
+        else:         #option 2 is for middle of the O
+            self.templine += (" O O ")
+    #def horizontal(self):
+        #self.horizontal += (" -" * 10)
 printboard()
