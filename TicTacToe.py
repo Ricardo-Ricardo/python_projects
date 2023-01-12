@@ -25,7 +25,7 @@ def gameboard():
 #    print("  X  | O O |     ")
 #    print(" X X |  O  |     ")
 
-
+square = 0
 
 card = gameboard()
 print(card)
@@ -35,10 +35,11 @@ class printboard():
         for i in range(1,10):
             self.templine += "  "
             if i == 2 or i == 5 or i ==8:
-                self.line = 2
+                self.line = 2 # second variation line / middle
             else:
-                self.line = 1
+                self.line = 1 # first variation line / top or bottom
             for j in range(3):
+                global square
                 if card[j][2] == 1: # 1 means empty
                     self.templine += ("     ")
                 elif card[j][2] == 2: # 2 means X
@@ -47,6 +48,8 @@ class printboard():
                     self.printO(self.line) # 3 means O
                 if j == 0 or j == 1:
                     self.templine += ("|")
+                print(square, j)
+            square += 1
             self.templine += "\n"
             if i == 3 or i == 6: # These are the horizontal lines
                 self.templine += (" -" * 10 + "\n")
@@ -65,7 +68,7 @@ class printboard():
     #def horizontal(self):
         #self.horizontal += (" -" * 10)
 
-print(card[1][2])
+#print(card[1][2])
 card[1][2] = 2
-print(card[1][2])
+#print(card[1][2])
 printboard()
