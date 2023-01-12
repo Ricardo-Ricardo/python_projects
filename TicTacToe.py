@@ -1,5 +1,3 @@
-#playerchoice1 = input("Enter Row and Column(A 1): ")
-
 def gameboard():
     card = []
     rows = [1, 2, 3]
@@ -18,12 +16,10 @@ def counter():
                 list.append(c+x)
         x += 3
 
-square = 0
 
-card = gameboard()
-#print(card)
 class printboard():
     def __init__(self):
+        square = 0
         self.templine = ""
         for i in range(1,10):
             self.templine += "  "
@@ -32,7 +28,6 @@ class printboard():
             else:
                 self.line = 1 # first variation line / top or bottom
             for j in range(3):
-                global square
                 if card[list[square]][2] == "empty": # 1 means empty
                     self.templine += ("     ")
                 elif card[list[square]][2] == "cross": # 2 means X
@@ -57,10 +52,11 @@ class printboard():
             self.templine += ("  O  ")
         else:         #option 2 is for middle of the O
             self.templine += (" O O ")
-    #def horizontal(self):
-        #self.horizontal += (" -" * 10)
+
+### All of the winning options in tic tac toe
 class checkwin():
     def __init__(self):
+        gameover = True
         if card[0][2] == card[1][2] == card[2][2]:
             if card[0][2] != "empty":
                 print("1")
@@ -82,19 +78,37 @@ class checkwin():
         if card[0][2] == card[4][2] == card[8][2]:
             if card[0][2] != "empty":
                 print("7")
+                exit()
         if card[2][2] == card[4][2] == card[6][2]:
             if card[2][2] != "empty":
-                print("8")
+                print("Player: " + "wins!")
 
+#playerchoice1 = input("Enter Row and Column(A 1): ")
+card = gameboard()
+counter()
+valid = True
+options = ["A 1", "B 1", "C 1", "A 2", "B 2", "C 2", "A 3", "B 3", "C 3"]
+for turns in range(9):
+    while (valid):
+        playerchoice1 = input("Enter Row and Column(A 1): ")
+        if playerchoice1 in str(options):
+            if card[options.index(playerchoice1)][2] == "empty":
+                card[options.index(playerchoice1)][2] = "cross"
+                valid = False
+        else:
+            print("error please enter letter and number(A 1)")
+    valid = True
+    printboard()
+    checkwin()
 
+#Output - 1
 print()
 #card[int(playerchoice1)][2] = "cross"
-card[0][2] = "cross"
-card[1][2] = "circle"
-card[2][2] = "cross"
+#card[0][2] = "cross"
+#card[1][2] = "circle"
+#card[2][2] = "cross"
 #card[5][2] = "cross"
 #print(card[1][2])
-counter()
-printboard()
-checkwin()
+#printboard()
+#checkwin()
 #print(card)
