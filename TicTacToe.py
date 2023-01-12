@@ -82,7 +82,7 @@ class checkwin:
             if card[2][2] != "empty":
                 self.finish()
     def finish(self):
-        if turns == 0:
+        if turns == 1:
             print("Player 1 Wins!")
         else:
             print("Player 2 Wins!")
@@ -110,9 +110,8 @@ for turns in range(9):
             if card[options.index(playerchoice2)][2] == "empty":
                 card[options.index(playerchoice2)][2] = "circle"
                 valid = False
-        else:
+        if valid == True:
             print("invalid input please enter again (A 1)")
     valid = True
     printboard()
     checkwin()
-
