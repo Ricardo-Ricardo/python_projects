@@ -1,4 +1,4 @@
-playerchoice1 = input("Enter Row and Column(A 1): ")
+#playerchoice1 = input("Enter Row and Column(A 1): ")
 
 def gameboard():
     card = []
@@ -12,10 +12,10 @@ def gameboard():
 list = []
 def counter():
     x = 0
-    for i in range(3):
-        for j in range(3):
-            for k in range (3):
-                list.append(k+x)
+    for a in range(3):
+        for b in range(3):
+            for c in range (3):
+                list.append(c+x)
         x += 3
 
 square = 0
@@ -61,11 +61,37 @@ class printboard():
         #self.horizontal += (" -" * 10)
 class checkwin():
     def __init__(self):
-        print()
-#print(card[1][2])
+        if card[0][2] == card[1][2] == card[2][2]:
+            if card[0][2] != "empty":
+                print("1")
+        if card[3][2] == card[4][2] == card[5][2]:
+            if card[3][2] != "empty":
+                print("2")
+        if card[6][2] == card[7][2] == card[8][2]:
+            if card[6][2] != "empty":
+                print("3")
+        if card[0][2] == card[3][2] == card[6][2]:
+            if card[0][2] != "empty":
+                print("4")
+        if card[1][2] == card[4][2] == card[7][2]:
+            if card[1][2] != "empty":
+                print("5")
+        if card[2][2] == card[5][2] == card[8][2]:
+            if card[2][2] != "empty":
+                print("6")
+        if card[0][2] == card[4][2] == card[8][2]:
+            if card[0][2] != "empty":
+                print("7")
+        if card[2][2] == card[4][2] == card[6][2]:
+            if card[2][2] != "empty":
+                print("8")
+
+
 print()
-card[int(playerchoice1)][2] = "cross"
-#card[1][2] = "cross"
+#card[int(playerchoice1)][2] = "cross"
+card[0][2] = "cross"
+card[1][2] = "circle"
+card[2][2] = "cross"
 #card[5][2] = "cross"
 #print(card[1][2])
 counter()
