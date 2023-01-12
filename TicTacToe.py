@@ -25,16 +25,6 @@ def gameboard():
 #    print("  X  | O O |     ")
 #    print(" X X |  O  |     ")
 
-def printX(line):
-    if line == 1:
-        print(" X X ")
-    else:
-        print("  X  ")
-def printO(line):
-    if line == 1:
-        print("  O  ")
-    else:
-        print(" O O ")
 def horizontal():
     horizontal = print(" -" * 10)
     return horizontal
@@ -46,12 +36,26 @@ class printboard():
         self.templine = ""
         for i in range(3):
             if card[i][2] == 1:
-                self.templine += ("     ")
+                #self.templine += ("     ")
+                self.printX(1)
             elif card[i][2] == 2:
-                printX()
+                self.printX()
             else:
-                printO()
+                self.printO()
         print(self.templine)
         horizontal()
-
+    def printX(self, line):
+        if line == 1:
+            #print("yes")
+            self.templine += (" X X ")
+        else:
+            #self.template += ("  X  ")
+            print("no")
+    def printO(self, line):
+        if line == 1:
+            #self.template += ("  O  ")
+            print("no")
+        else:
+            #self.template += (" O O ")
+            print("no")
 printboard()
