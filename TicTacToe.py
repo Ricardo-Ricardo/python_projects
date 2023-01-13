@@ -129,9 +129,9 @@ def playgame():
             playerchoice1 = "empty" # player 1 input is set to empty
             playerchoice2 = "empty" # player 2 input is set to empty
             if turns % 2 == 0: # evens player 1 goes, odd player 2 goes
-                playerchoice1 = input("Player 1 Enter Row and Column(X): ").upper()
+                playerchoice1 = input("Player 1(X) Enter Column space Row: ").upper()
             else:
-                playerchoice2 = input("Player 2 Enter Row and Column(O): ").upper()
+                playerchoice2 = input("Player 2(O) Enter Column space Row: ").upper()
             if playerchoice1 in str(options): # check to see if input matches one options
                 if card[options.index(playerchoice1)][2] == "empty": # check that the square has not been selected
                     card[options.index(playerchoice1)][2] = "cross" # sets player choice
@@ -141,7 +141,7 @@ def playgame():
                     card[options.index(playerchoice2)][2] = "circle" # sets player choice
                     valid = False
             if valid == True:
-                print("invalid input please enter again (A 1)")
+                print("invalid input please enter again (e.g. A 1)")
         valid = True
         print(turns)
         printboard()
