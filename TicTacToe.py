@@ -141,7 +141,7 @@ def playgame():
                     card[options.index(playerchoice2)][2] = "circle" # sets player choice
                     valid = False
             if valid == True:
-                print("invalid input please enter again (e.g. A 1)")
+                print("Invalid input please enter again (e.g. A 1)")
         valid = True
         print(turns)
         printboard()
