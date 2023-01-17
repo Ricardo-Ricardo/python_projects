@@ -1,5 +1,6 @@
 import requests
 import smtplib
+from email.mime.text import MIMEText
 from bs4 import BeautifulSoup
 
 URL = "https://www.amazon.com/LEGO-Ultimate-Millennium-Falcon-Building/dp/B075SDMMMV/ref=sxin_15_pa_sp_search_thematic_sspa?content-id=amzn1.sym.14a246c3-7a62-40bf-bdd0-5ac67c2a1913%3Aamzn1.sym.14a246c3-7a62-40bf-bdd0-5ac67c2a1913&cv_ct_cx=lego+millennium+falcon&keywords=lego+millennium+falcon&pd_rd_i=B075SDMMMV&pd_rd_r=926479ca-fa1b-407d-8d13-f05e54eaa4c2&pd_rd_w=1491J&pd_rd_wg=03xMj&pf_rd_p=14a246c3-7a62-40bf-bdd0-5ac67c2a1913&pf_rd_r=PAF8HB17HT4MKEH87F7D&qid=1673650298&sprefix=lego+mileniu%2Caps%2C192&sr=1-1-a73d1c8c-2fd2-4f19-aa41-2df022bcb241-spons&ufe=app_do%3Aamzn1.fos.2b70bf2b-6730-4ccf-ab97-eb60747b8daf&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUExUEZDQlo5RkJHSzFOJmVuY3J5cHRlZElkPUEwMjY0NjUyM1M2U0tRR0laVFRSMCZlbmNyeXB0ZWRBZElkPUEwMjI4MjE1N1RMMExZTVVKNTNFJndpZGdldE5hbWU9c3Bfc2VhcmNoX3RoZW1hdGljJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ=="
@@ -12,6 +13,7 @@ def check_price():
     soup = BeautifulSoup(page.content, "lxml")
     
     title = ''
+    global price
     price = ''
     try:
         product_title = soup.find("span",
@@ -28,29 +30,37 @@ def check_price():
 
     converted_price = float(price[1:])
 
-    if(converted_price < 700):
-        send_mail()
-
     print("product Title = ", title)
     print("product Price = ", converted_price)
+    if(converted_price > 700):
+        send_mail()
 
 def send_mail():
     server = smtplib.SMTP('smtp.gmail.com', 587)
+    #server = smtplib.SMTP_SSL('smtp.googlemail.com', 465)
     server.ehlo()
     server.starttls()
     server.ehlo()
-    server.login('ricky.ramirez@outlook.com', 'wujryykogugsllep')
+    server.login('kyle555robert@gmail.com', 'svxurelkxdkihzda')
 
-    subject = "Price fell down!"
-    body = 'Check the amazon link '
-
-    msg = f"Subject: {subject}\n\n{body}"
-
+    #subject = "Price fell down!"
+    #hyper_link = MIMEText(u'<a href="www.google.com">link</a>','html')
+    #body = "Check the amazon " + hyper_link
+    #body = """
+    #Go to page: <a href="https://www.google.com/">click here</a>
+    #Thanks
+    #"""
+    #body = MIMEText('<a href="https://www.google.com/">here</a>', msg.as_string())
+    #msg = f"Subject: {subject}\n\n{body}"
+    msg = MIMEText('<a href="https://www.google.com/">here</a>', 'html')
+    #server.sendmail('kyle555robert@gmail.com', 'ricky.ramirez@outlook.com', msg.as_string())
     server.sendmail(
-        'ricky.ramirez@outlook.com', #From
-        'ricky.ramirez@outlook.com', #To
-        msg
+        'kyle555robert@gmail.com', # From
+        'ricky.ramirez@outlook.com', # To
+        msg.as_string()
+        #MIMEText('<a href="https://www.google.com/">here</a>', msg.as_string())
     )
+    
     print('Email has been sent')
     server.quit()
 
