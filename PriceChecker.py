@@ -6,23 +6,23 @@ HEADERS = ({
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6.1 Safari/605.1.15',
     'Accept-Language': 'en-US, en;q=0.5'})
  
-webpage = requests.get(URL, headers=HEADERS)
-soup = BeautifulSoup(webpage.content, "lxml")
+page = requests.get(URL, headers=HEADERS)
+soup = BeautifulSoup(page.content, "lxml")
  
-product_name = ''
-product_price = ''
+title = ''
+price = ''
 try:
     product_title = soup.find("span",
                               attrs={"id": 'productTitle'})
-    product_name = product_title.string.strip().replace(',', '')
+    title = product_title.string.strip().replace(',', '')
  
 except AttributeError:
-    product_name = "NA"
+    title = "NA"
  
 try:
-    product_price = soup.find("span", attrs={'class': 'a-offscreen'}).string.strip().replace(',', '')
+    price = soup.find("span", attrs={'class': 'a-offscreen'}).string.strip().replace(',', '')
 except AttributeError:
-    product_price = "NA"
- 
-print("product Title = ", product_name)
-print("product Price = ", product_price)
+   price = "NA"
+
+print("product Title = ", title)
+print("product Price = ", price)
