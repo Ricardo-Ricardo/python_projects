@@ -34,7 +34,7 @@ def check_price():
 
     print("product Title = ", title)
     print("product Price = ", converted_price)
-    if(converted_price > 700): # set the minimum price amount in order to send mail
+    if(converted_price < 700): # set the minimum price amount in order to send mail
         send_mail()
 
 ### send email of item with the link attached as a hyperlink with html
