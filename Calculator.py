@@ -5,6 +5,7 @@ window.minsize(400,400) # size of window in pixels
 window.title("Title")    # title of window
 window.wm_iconbitmap("icon_name.ico") # set icon
 
+counter = 0 # count each button press
 
 def center(window):
     window.update_idletasks() # redraw widgets
@@ -17,12 +18,17 @@ def center(window):
 
     window.geometry('{}x{}+{}+{}'.format(width, height, x, y)) # set geometry
 
+def press():
+    global counter
+    counter += 1 # counts the button presses
+    label.config(text = f"Button clicked: {counter} times") # set label
+
 center(window)
 
-label = tkinter.Label(window, text = "Click the Button")
+label = tkinter.Label(window, text = "Click the Button") # set label
 label.place(x=10, y=10)
 
-button = tkinter.Button(window, text="Button")
+button = tkinter.Button(window, text="Button", command=press) # set the button
 button.place(x = 10, y = 40)
 
 window.mainloop() 
