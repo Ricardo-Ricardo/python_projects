@@ -10,6 +10,17 @@ def button(source, side, text, command = None): # button
     storeObj.pack(side = side, expand = YES, fill = BOTH)
     return storeObj
 
+def center(window):
+    window.update_idletasks() # redraw widgets
+
+    width = window.winfo_width() 
+    height = window.winfo_height()
+
+    x = (window.winfo_screenwidth() // 2) - (width // 2) # calculate geometry
+    y = (window.winfo_screenheight() // 2) - (height // 2)
+
+    window.geometry('{}x{}+{}+{}'.format(width, height, x, y)) # set geometry
+
 class app(Frame): 
     def __init__(self):
         Frame.__init__(self)
@@ -26,17 +37,6 @@ if __name__ == '__main__':
 # window.wm_iconbitmap("icon_name.ico") # set icon
 
 # counter = 0 # count each button press
-
-# def center(window):
-#     window.update_idletasks() # redraw widgets
-
-#     width = window.winfo_width() 
-#     height = window.winfo_height()
-
-#     x = (window.winfo_screenwidth() // 2) - (width // 2) # calculate geometry
-#     y = (window.winfo_screenheight() // 2) - (height // 2)
-
-#     window.geometry('{}x{}+{}+{}'.format(width, height, x, y)) # set geometry
 
 # def press():
 #     global counter
