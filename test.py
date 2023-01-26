@@ -1,11 +1,12 @@
-from tkinter import *
 
-root = Tk()
+#x = 'global x'
 
-# create label widget
-myLabel = Label(root, text = "Hello World!")
+m = min([5,1,4,2,3])
+print(m)
 
-# print on screen
-myLabel.pack()
+def test(z):
+    x = 'local x'
+    print(z)
 
-root.mainloop()
+#test('local z')
+#print(x)
