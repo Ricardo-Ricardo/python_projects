@@ -39,8 +39,8 @@ def check_price():
 
 ### send email of item with the link attached as a hyperlink with html
 def send_mail():
-    email = 'kyle555robert@gmail.com' # sender
-    send_to = 'ricky.ramirez@outlook.com' # reciever
+    email = 'kylerobert@gmail.com' # sender
+    send_to = 'ricky.misc99@gmail.com' # reciever
     subject = title + " Price Fell Down!"
     messageHTML = (title + " has dropped to " + price + '<p> Check it out on amazon <a href="https://www.amazon.com/LEGO-Ultimate-Millennium-Falcon-Building/dp/B075SDMMMV/ref=sxin_15_pa_sp_search_thematic_sspa?content-id=amzn1.sym.14a246c3-7a62-40bf-bdd0-5ac67c2a1913%3Aamzn1.sym.14a246c3-7a62-40bf-bdd0-5ac67c2a1913&cv_ct_cx=lego+millennium+falcon&keywords=lego+millennium+falcon&pd_rd_i=B075SDMMMV&pd_rd_r=926479ca-fa1b-407d-8d13-f05e54eaa4c2&pd_rd_w=1491J&pd_rd_wg=03xMj&pf_rd_p=14a246c3-7a62-40bf-bdd0-5ac67c2a1913&pf_rd_r=PAF8HB17HT4MKEH87F7D&qid=1673650298&sprefix=lego+mileniu%2Caps%2C192&sr=1-1-a73d1c8c-2fd2-4f19-aa41-2df022bcb241-spons&ufe=app_do%3Aamzn1.fos.2b70bf2b-6730-4ccf-ab97-eb60747b8daf&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUExUEZDQlo5RkJHSzFOJmVuY3J5cHRlZElkPUEwMjY0NjUyM1M2U0tRR0laVFRSMCZlbmNyeXB0ZWRBZElkPUEwMjI4MjE1N1RMMExZTVVKNTNFJndpZGdldE5hbWU9c3Bfc2VhcmNoX3RoZW1hdGljJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ==">here</a>')
     messagePlain = title + " price has dropped to " + price
@@ -57,8 +57,8 @@ def send_mail():
     server.ehlo() # used to identify itself when connecting to another email server
     server.starttls() # tells an email server that the email client wants a secure connection
     server.ehlo() # establishes connection again
-    server.login('kyle555robert@gmail.com', 'svxurelkxdkihzda') # generated app password
-    server.sendmail('kyle555robert@gmail.com', 'ricky.ramirez@outlook.com', msg.as_string())
+    server.login('kylerobert@gmail.com', 'svxurllkxskihzda') # generated app password
+    server.sendmail('kylerobert@gmail.com', 'ricky.misc99@gmail.com', msg.as_string())
     
     print('Email has been sent')
     server.quit() # close connections
